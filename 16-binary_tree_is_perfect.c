@@ -19,7 +19,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 			if (leaf_level == -1)
 				leaf_level = level;
 			else if (leaf_level != level)
-				return (0);
+				return (1);
 		}
 		if (tree->left == NULL || tree->right == NULL)
 			return (0);
