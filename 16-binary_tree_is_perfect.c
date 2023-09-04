@@ -7,7 +7,6 @@
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	int leaf_level = -1;
-	int node_count = 0;
 	int level = 0;
 
 	if (tree == NULL)
@@ -21,12 +20,11 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 				leaf_level = level;
 			else if (leaf_level != level)
 				return (0);
-			node_count++;
 		}
 		if (tree->left == NULL || tree->right == NULL)
 			return (0);
 		level++;
 		tree = tree->left;
 	}
-	return (node_count == (1 << level));
+	return (1);
 }
