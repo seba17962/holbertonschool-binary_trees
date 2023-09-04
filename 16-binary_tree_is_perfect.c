@@ -22,7 +22,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 				return (1);
 		}
 		if (tree->left == NULL || tree->right == NULL)
-			return (0);
+			return (1);
 		level++;
 		tree = tree->left;
 	}
