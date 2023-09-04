@@ -10,16 +10,17 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 	size_t count_left = 0;
 	size_t count_right = 0;
-	size_t count_sum = 0;
+	size_t count_current = 0;
+	size_t sum = 0;
 
 	if (tree == NULL)
 		return (0);
 
 	if (tree->left || tree->right)
-		return (1);
+		count_current = 1;
 
 	count_left = binary_tree_nodes(tree->left);
 	count_right = binary_tree_nodes(tree->right);
-	count_sum = count_left + count_right;
-	return (count_sum);
+	sum = count_current + count_left + count_right;
+	return (sum);
 }
