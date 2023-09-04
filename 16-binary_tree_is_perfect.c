@@ -6,11 +6,11 @@
 */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int left_height = 0, right_height = 0;
-	const binary_tree_t *left = tree->left, *right = tree->right;
-
 	if (tree == NULL)
 		return (0);
+
+	int left_height = 0, right_height = 0;
+	const binary_tree_t *left = tree->left, *right = tree->right;
 
 	while (left)
 	{
