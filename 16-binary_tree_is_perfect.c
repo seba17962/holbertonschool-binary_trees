@@ -6,25 +6,30 @@
 */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int leaf_level = -1;
-	int level = 0;
+	int left_height = 0, right_height = 0;
+	const binary_tree_t *left = tree->left, *right = tree->right;
 
 	if (tree == NULL)
 		return (0);
 
-	while (tree != NULL)
+	while (left)
 	{
-		if (tree->left == NULL && tree->right == NULL)
-		{
-			if (leaf_level == -1)
-				leaf_level = level;
-			else if (leaf_level != level)
-				return (1);
-		}
-		if (tree->left == NULL || tree->right == NULL)
-			return (1);
-		level++;
-		tree = tree->left;
+		left_height++;
+		left = left->left;
 	}
-	return (1);
+
+	while (right)
+	{
+		right_height++;
+		right = right->right;
+	}
+	if (left_height == right_height)
+	{
+		if (!tree->left && !tree->right)
+			return (1);
+
+		return (binary_tree_is_perfect(tree->left) &&
+				binary_tree_is_perfect(tree->right));
+	}
+	return (0);
 }
